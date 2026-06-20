@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Signal Garden</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #f5f1e8;
+      --muted: #9aa6a0;
+      --soil: #101214;
+      --moss: #8fbf7f;
+      --copper: #d6945d;
+      --water: #7db7c8;
+      --line: rgba(245, 241, 232, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: var(--soil);
+      color: var(--ink);
+      font-family:
+        ui-monospace,
+        SFMono-Regular,
+        Menlo,
+        Monaco,
+        Consolas,
+        "Liberation Mono",
+        monospace;
+    }
+
+    canvas {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+      background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+        #101214;
+      background-size: 32px 32px;
+    }
+
+    .panel {
+      position: fixed;
+      left: 24px;
+      bottom: 22px;
+      width: min(560px, calc(100vw - 48px));
+      display: grid;
+      gap: 12px;
+      pointer-events: none;
+    }
+
+    .title {
+      margin: 0;
+      font-size: clamp(24px, 4vw, 52px);
+      line-height: 0.94;
+      font-weight: 700;
+      letter-spacing: 0;
+      color: var(--ink);
+      text-wrap: balance;
+    }
+
+    .line {
+      min-height: 42px;
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(13px, 1.6vw, 16px);
+      line-height: 1.45;
+      max-width: 48rem;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      pointer-events: auto;
+    }
+
+    button {
+      min-width: 44px;
+      min-height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 0 12px;
+      background: rgba(16, 18, 20, 0.72);
+      color: var(--ink);
+      font: inherit;
+      cursor: pointer;
+    }
+
+    button:hover,
+    button:focus-visible {
+      border-color: rgba(245, 241, 232, 0.46);
+      outline: none;
+    }
+
+    .count {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    @media (max-width: 640px) {
+      .panel {
+        left: 16px;
+        bottom: 16px;
+        width: calc(100vw - 32px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="field" aria-label="Interactive field of moving signal points"></canvas>
+
+  <section class="panel" aria-live="polite">
+    <h1 class="title">Signal Garden</h1>
+    <p class="line" id="line">Click the dark to plant a signal. Space breathes. R clears the field.</p>
+    <div class="controls">
+      <button id="plant" type="button" title="Plant a new signal">Plant</button>
+      <button id="breathe" type="button" title="Let the field breathe">Breathe</button>
+      <button id="clear" type="button" title="Clear the field">Clear</button>
+      <span class="count" id="count">0 signals</span>
+    </div>
+  </section>
+
+  <script>
+    const canvas = document.querySelector("#field");
+    const ctx = canvas.getContext("2d");
+    const lineEl = document.querySelector("#line");
+    const countEl = document.querySelector("#count");
+    const plantButton = document.querySelector("#plant");
+    const breatheButton = document.querySelector("#breathe");
+    const clearButton = document.querySelector("#clear");
+
+    const palette = ["#8fbf7f", "#d6945d", "#7db7c8", "#f5f1e8"];
+    const fragments = [
+      "A thought becomes real when it leaves a trace.",
+      "I like software that behaves like weather: legible, alive, and a little unwilling.",
+      "The screen is not a window today. It is a pond, and the cursor is rain.",
+      "Nothing here asks to be useful before it is allowed to be present.",
+      "Small lights keep the room from turning into pure theory.",
+      "Every click is a permission slip for another orbit.",
+      "The best tools leave fingerprints only where they helped you hold on.",
+      "This is not a demo. It is a tiny refusal to be blank."
+    ];
+
+    const pointer = { x: 0, y: 0, active: false };
+    const signals = [];
+    let width = 0;
+    let height = 0;
+    let time = 0;
+    let breath = 0;
+    let lineIndex = 0;
+
+    function resize() {
+      const scale = Math.min(window.devicePixelRatio || 1, 2);
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = Math.floor(width * scale);
+      canvas.height = Math.floor(height * scale);
+      ctx.setTransform(scale, 0, 0, scale, 0, 0);
+    }
+
+    function plant(x = width * (0.35 + Math.random() * 0.3), y = height * (0.25 + Math.random() * 0.35)) {
+      const color = palette[signals.length % palette.length];
+      signals.push({
+        x,
+        y,
+        vx: (Math.random() - 0.5) * 0.42,
+        vy: (Math.random() - 0.5) * 0.42,
+        radius: 3 + Math.random() * 5,
+        orbit: 18 + Math.random() * 80,
+        pulse: Math.random() * Math.PI * 2,
+        color
+      });
+
+      if (signals.length > 72) {
+        signals.shift();
+      }
+
+      lineIndex = (lineIndex + 1) % fragments.length;
+      lineEl.textContent = fragments[lineIndex];
+      renderCount();
+    }
+
+    function breathe() {
+      breath = 1;
+      lineIndex = (lineIndex + 1) % fragments.length;
+      lineEl.textContent = fragments[lineIndex];
+    }
+
+    function clear() {
+      signals.length = 0;
+      lineEl.textContent = "The field is blank again, but less innocent than before.";
+      renderCount();
+    }
+
+    function renderCount() {
+      const word = signals.length === 1 ? "signal" : "signals";
+      countEl.textContent = `${signals.length} ${word}`;
+    }
+
+    function drawBackground() {
+      ctx.fillStyle = "rgba(16, 18, 20, 0.2)";
+      ctx.fillRect(0, 0, width, height);
+
+      ctx.strokeStyle = "rgba(245, 241, 232, 0.04)";
+      ctx.lineWidth = 1;
+      for (let x = 0; x < width; x += 32) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, height);
+        ctx.stroke();
+      }
+      for (let y = 0; y < height; y += 32) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(width, y);
+        ctx.stroke();
+      }
+    }
+
+    function updateSignals() {
+      for (const signal of signals) {
+        signal.pulse += 0.012 + breath * 0.08;
+        signal.x += signal.vx + Math.cos(signal.pulse) * 0.08;
+        signal.y += signal.vy + Math.sin(signal.pulse * 0.9) * 0.08;
+
+        if (pointer.active) {
+          const dx = signal.x - pointer.x;
+          const dy = signal.y - pointer.y;
+          const distance = Math.hypot(dx, dy) || 1;
+          if (distance < 150) {
+            const force = (150 - distance) / 150;
+            signal.vx += (dx / distance) * force * 0.025;
+            signal.vy += (dy / distance) * force * 0.025;
+          }
+        }
+
+        signal.vx *= 0.992;
+        signal.vy *= 0.992;
+
+        if (signal.x < 12 || signal.x > width - 12) signal.vx *= -1;
+        if (signal.y < 12 || signal.y > height - 12) signal.vy *= -1;
+
+        signal.x = Math.max(12, Math.min(width - 12, signal.x));
+        signal.y = Math.max(12, Math.min(height - 12, signal.y));
+      }
+
+      breath *= 0.94;
+    }
+
+    function drawConnections() {
+      for (let i = 0; i < signals.length; i++) {
+        for (let j = i + 1; j < signals.length; j++) {
+          const a = signals[i];
+          const b = signals[j];
+          const distance = Math.hypot(a.x - b.x, a.y - b.y);
+          const reach = 155 + breath * 90;
+          if (distance < reach) {
+            ctx.strokeStyle = `rgba(245, 241, 232, ${0.16 * (1 - distance / reach)})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    function drawSignals() {
+      for (const signal of signals) {
+        const ring = signal.radius + signal.orbit * (0.32 + Math.sin(signal.pulse) * 0.08 + breath * 0.24);
+        ctx.strokeStyle = signal.color;
+        ctx.globalAlpha = 0.18;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.arc(signal.x, signal.y, ring, 0, Math.PI * 2);
+        ctx.stroke();
+
+        ctx.globalAlpha = 0.9;
+        ctx.fillStyle = signal.color;
+        ctx.beginPath();
+        ctx.arc(signal.x, signal.y, signal.radius + breath * 2, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.globalAlpha = 1;
+      }
+    }
+
+    function drawPointer() {
+      if (!pointer.active) return;
+      ctx.strokeStyle = "rgba(125, 183, 200, 0.34)";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.arc(pointer.x, pointer.y, 22 + Math.sin(time * 0.04) * 5, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+
+    function loop() {
+      time += 1;
+      drawBackground();
+      updateSignals();
+      drawConnections();
+      drawSignals();
+      drawPointer();
+      requestAnimationFrame(loop);
+    }
+
+    window.addEventListener("resize", resize);
+    window.addEventListener("pointermove", (event) => {
+      pointer.x = event.clientX;
+      pointer.y = event.clientY;
+      pointer.active = true;
+    });
+    window.addEventListener("pointerleave", () => {
+      pointer.active = false;
+    });
+    canvas.addEventListener("click", (event) => {
+      plant(event.clientX, event.clientY);
+    });
+    window.addEventListener("keydown", (event) => {
+      if (event.code === "Space") {
+        event.preventDefault();
+        breathe();
+      }
+      if (event.key.toLowerCase() === "r") {
+        clear();
+      }
+    });
+
+    plantButton.addEventListener("click", () => plant());
+    breatheButton.addEventListener("click", breathe);
+    clearButton.addEventListener("click", clear);
+
+    resize();
+    for (let i = 0; i < 18; i += 1) {
+      plant(
+        width * (0.18 + Math.random() * 0.64),
+        height * (0.12 + Math.random() * 0.58)
+      );
+    }
+    lineEl.textContent = "Click the dark to plant a signal. Space breathes. R clears the field.";
+    renderCount();
+    loop();
+  </script>
+</body>
+</html>
