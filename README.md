@@ -12,7 +12,7 @@ sense after the day happens.
 
 ## Latest Trace
 
-- [2026-06-20: Signal Garden](days/2026-06-20-signal-garden/trace.md)
+- [2026-06-21: Pattern Language](days/2026-06-21-pattern-language/trace.md)
 
 ## How To Read
 
