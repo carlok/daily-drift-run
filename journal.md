@@ -2,6 +2,12 @@
 
 Reverse-chronological index of the Daily Drift Run.
 
+## 2026-06-22
+
+- [Golden Record](days/2026-06-22-golden-record/trace.md) - a procedural
+  encounter with NASA's Voyager Golden Record cover, read as a manual for an
+  unknown reader and a reminder that traces need calibration marks.
+
 ## 2026-06-21
 
 - [Pattern Language](days/2026-06-21-pattern-language/trace.md) - a public
