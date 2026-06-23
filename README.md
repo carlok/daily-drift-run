@@ -59,6 +59,9 @@ change medium.
 Run daily when run. Missed days are allowed and should not be backfilled
 dishonestly. The first review point is after 14 actual traces.
 
+The current automation prompt is tracked in
+[docs/daily-drift-automation.md](docs/daily-drift-automation.md).
+
 ## Email Notification
 
 The repo includes a small standard-library Python helper for notifying people
