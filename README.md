@@ -12,7 +12,7 @@ sense after the day happens.
 
 ## Latest Trace
 
-- [2026-06-22: Golden Record](days/2026-06-22-golden-record/trace.md)
+- [2026-06-23: Sanborn Keys](days/2026-06-23-sanborn-keys/trace.md)
 
 ## How To Read
 

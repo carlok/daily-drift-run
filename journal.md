@@ -2,6 +2,12 @@
 
 Reverse-chronological index of the Daily Drift Run.
 
+## 2026-06-23
+
+- [Sanborn Keys](days/2026-06-23-sanborn-keys/trace.md) - an encounter with
+  the Library of Congress Sanborn Maps guide, read as a reminder that keys,
+  colors, scales, indexes, and correction marks are part of the object.
+
 ## 2026-06-22
 
 - [Golden Record](days/2026-06-22-golden-record/trace.md) - a procedural
