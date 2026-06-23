@@ -58,3 +58,25 @@ change medium.
 
 Run daily when run. Missed days are allowed and should not be backfilled
 dishonestly. The first review point is after 14 actual traces.
+
+## Email Notification
+
+The repo includes a small standard-library Python helper for notifying people
+when a day packet is available on GitHub.
+
+1. Copy `.env.example` to `.env` and fill the SMTP values.
+2. Copy `recipients.example.json` to `recipients.json` and add recipient email
+   addresses.
+3. Preview the latest day email:
+
+   ```bash
+   python3 scripts/notify_daily_trace.py --dry-run
+   ```
+
+4. Send it:
+
+   ```bash
+   python3 scripts/notify_daily_trace.py
+   ```
+
+Both `.env` and `recipients.json` are ignored by Git.
