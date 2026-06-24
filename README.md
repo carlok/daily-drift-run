@@ -12,7 +12,7 @@ sense after the day happens.
 
 ## Latest Trace
 
-- [2026-06-20: Signal Garden](days/2026-06-20-signal-garden/trace.md)
+- [2026-06-24: RFC Errata](days/2026-06-24-rfc-errata/trace.md)
 
 ## How To Read
 
@@ -58,3 +58,28 @@ change medium.
 
 Run daily when run. Missed days are allowed and should not be backfilled
 dishonestly. The first review point is after 14 actual traces.
+
+The current automation prompt is tracked in
+[docs/daily-drift-automation.md](docs/daily-drift-automation.md).
+
+## Email Notification
+
+The repo includes a small standard-library Python helper for notifying people
+when a day packet is available on GitHub.
+
+1. Copy `.env.example` to `.env` and fill the SMTP values.
+2. Copy `recipients.example.json` to `recipients.json` and add recipient email
+   addresses.
+3. Preview the latest day email:
+
+   ```bash
+   python3 scripts/notify_daily_trace.py --dry-run
+   ```
+
+4. Send it:
+
+   ```bash
+   python3 scripts/notify_daily_trace.py
+   ```
+
+Both `.env` and `recipients.json` are ignored by Git.
