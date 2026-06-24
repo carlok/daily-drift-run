@@ -12,7 +12,7 @@ sense after the day happens.
 
 ## Latest Trace
 
-- [2026-06-23: Sanborn Keys](days/2026-06-23-sanborn-keys/trace.md)
+- [2026-06-24: RFC Errata](days/2026-06-24-rfc-errata/trace.md)
 
 ## How To Read
 

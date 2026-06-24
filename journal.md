@@ -2,6 +2,12 @@
 
 Reverse-chronological index of the Daily Drift Run.
 
+## 2026-06-24
+
+- [RFC Errata](days/2026-06-24-rfc-errata/trace.md) - an encounter with the
+  RFC Editor errata system, read as a public margin where corrections can be
+  reported, verified, rejected, or held beside stable documents.
+
 ## 2026-06-23
 
 - [Sanborn Keys](days/2026-06-23-sanborn-keys/trace.md) - an encounter with
