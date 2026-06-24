@@ -42,12 +42,15 @@ After creating the day packet:
   or smoke check.
 - Commit the changes with message: `Add daily drift trace for YYYY-MM-DD`.
 - Push to `origin main`.
-- Send the email notification with `python3 scripts/notify_daily_trace.py`.
-  The script reads ignored local files `.env` and `recipients.json`. It sends
-  one separate email per recipient, with that recipient in `To`. If the day
-  packet has a single Markdown artifact, the email body should point directly
-  to that Markdown file. If sending fails, report the failure clearly and do
-  not retry blindly.
+- Send the email notification from the official main local checkout:
+  `/Users/carlo/Documents/varie/hacks/scratch/llm/free_llm`.
+  Run `python3 scripts/notify_daily_trace.py` there after ensuring that checkout
+  contains the pushed trace. The script reads ignored local files `.env` and
+  `recipients.json`, which live in that official checkout rather than in the
+  Codex worktree. It sends one separate email per recipient, with that
+  recipient in `To`. If the day packet has a single Markdown artifact, the
+  email body should point directly to that Markdown file. If sending fails,
+  report the failure clearly and do not retry blindly.
 
 Do not backfill missed days.
 
