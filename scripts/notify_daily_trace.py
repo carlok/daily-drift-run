@@ -104,13 +104,26 @@ def artifact_target(day_dir: Path) -> Path | None:
     return None
 
 
+def primary_reading_target(day_dir: Path) -> Path:
+    artifact = artifact_target(day_dir)
+    if artifact and artifact.suffix.lower() == ".md":
+        return artifact
+
+    trace_path = day_dir / "trace.md"
+    if trace_path.exists():
+        return trace_path
+
+    return day_dir
+
+
 def build_message(env: dict[str, str], recipient: str, day_dir: Path) -> EmailMessage:
+    if not day_dir.is_absolute():
+        day_dir = ROOT / day_dir
+
     base_url = required(env, "GITHUB_BASE_URL")
     from_address = required(env, "SMTP_FROM")
-    relative_day = day_dir.relative_to(ROOT)
-    folder_url = github_url(base_url, relative_day)
-    trace_url = github_url(base_url, relative_day / "trace.md")
-    artifact = artifact_target(day_dir)
+    reading_target = primary_reading_target(day_dir)
+    reading_url = github_url(base_url, reading_target.relative_to(ROOT))
 
     title = day_dir.name
     trace_path = day_dir / "trace.md"
@@ -125,12 +138,8 @@ def build_message(env: dict[str, str], recipient: str, day_dir: Path) -> EmailMe
     body_lines = [
         "Today's Daily Drift trace is available here:",
         "",
-        folder_url,
-        "",
-        f"Trace: {trace_url}",
+        reading_url,
     ]
-    if artifact:
-        body_lines.append(f"Artifact: {github_url(base_url, artifact.relative_to(ROOT))}")
 
     message = EmailMessage()
     message["Subject"] = subject

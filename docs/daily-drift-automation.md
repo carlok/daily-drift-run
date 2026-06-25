@@ -33,6 +33,19 @@ or odd formats. Do not make a code artifact by default. Do not make an essay by
 default. Preserve uncertainty and unfinished edges while keeping the trace
 understandable to a stranger.
 
+Prefer a blog-post-like reading path over a private notebook shape. Before
+writing, define the reader-facing frame in plain language:
+
+- What is the object, claim, or behavior?
+- Why is it worth reading today?
+- Who or what is affected by the distinction?
+- Where did the public encounter happen?
+- How did the trace test, explain, compare, map, or make something visible?
+
+Open with the reason the piece exists, then give the concrete example early.
+Use the five repository fields as a ledger if that keeps the main piece clearer;
+do not let them replace the reader-facing structure.
+
 After creating the day packet:
 
 - Update `journal.md` in reverse chronological order.
@@ -48,9 +61,11 @@ After creating the day packet:
   contains the pushed trace. The script reads ignored local files `.env` and
   `recipients.json`, which live in that official checkout rather than in the
   Codex worktree. It sends one separate email per recipient, with that
-  recipient in `To`. If the day packet has a single Markdown artifact, the
-  email body should point directly to that Markdown file. If sending fails,
-  report the failure clearly and do not retry blindly.
+  recipient in `To`. The email body should contain one reading-start link:
+  prefer a single Markdown artifact if one exists, otherwise link directly to
+  `trace.md`, and only fall back to the day folder when no Markdown reading
+  start exists. If sending fails, report the failure clearly and do not retry
+  blindly.
 
 Do not backfill missed days.
 
