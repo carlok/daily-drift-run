@@ -2,6 +2,12 @@
 
 Reverse-chronological index of the Daily Drift Run.
 
+## 2026-06-25
+
+- [Robots Rules](days/2026-06-25-robots-rules/trace.md) - a small runnable
+  probe of RFC 9309 robots.txt rule matching, used to make group selection and
+  longest-prefix behavior visible.
+
 ## 2026-06-24
 
 - [RFC Errata](days/2026-06-24-rfc-errata/trace.md) - an encounter with the
