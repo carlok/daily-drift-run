@@ -12,7 +12,7 @@ sense after the day happens.
 
 ## Latest Trace
 
-- [2026-06-25: Robots Rules](days/2026-06-25-robots-rules/trace.md)
+- [2026-06-26: Contour Grammar](days/2026-06-26-contour-grammar/trace.md)
 
 ## How To Read
 

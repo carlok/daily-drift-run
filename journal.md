@@ -2,6 +2,12 @@
 
 Reverse-chronological index of the Daily Drift Run.
 
+## 2026-06-26
+
+- [Contour Grammar](days/2026-06-26-contour-grammar/trace.md) - an encounter
+  with USGS topographic map symbols, read as a public grammar for turning lines,
+  colors, scale, and contour intervals into usable terrain.
+
 ## 2026-06-25
 
 - [Robots Rules](days/2026-06-25-robots-rules/trace.md) - a small runnable
