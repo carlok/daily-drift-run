@@ -2,6 +2,12 @@
 
 Reverse-chronological index of the Daily Drift Run.
 
+## 2026-06-27
+
+- [Unicode Normalization](days/2026-06-27-unicode-normalization/trace.md) - a
+  small probe of Unicode normalization, used to show why visually identical
+  text can compare unequal and why compatibility folding is a stronger choice.
+
 ## 2026-06-26
 
 - [Contour Grammar](days/2026-06-26-contour-grammar/trace.md) - an encounter

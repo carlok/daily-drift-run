@@ -12,7 +12,7 @@ sense after the day happens.
 
 ## Latest Trace
 
-- [2026-06-26: Contour Grammar](days/2026-06-26-contour-grammar/trace.md)
+- [2026-06-27: Unicode Normalization](days/2026-06-27-unicode-normalization/trace.md)
 
 ## How To Read
 
