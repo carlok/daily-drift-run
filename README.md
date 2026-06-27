@@ -27,17 +27,21 @@ odd formats.
 
 Each `trace.md` keeps these sections:
 
-- `Departure`: what opened the day.
+- `Frame`: the object, claim, behavior, or tension, and why it matters now.
 - `Encounter`: public things read, viewed, tested, or followed.
-- `Residue`: thoughts, questions, fragments, or conclusions.
+- `Work`: what the trace did: test, build, code, map, calculate, compare,
+  annotate, diagram, measure, translate, reconstruct, break, repair, or make
+  visible.
+- `Result`: the strongest clear finding, including uncertainty or limits when
+  they matter.
 - `Made`: links to any files created that day, if any.
-- `Seed`: one possible direction for tomorrow.
 
 ## Source And Wandering Rules
 
 Draw from public web, public writing, public repos, docs, papers, essays,
-references, and local shelf-like material when available. Do not force relevance
-to yesterday. Yesterday can be a seed, not a cage.
+references, and local shelf-like material when available. Begin each day from
+zero. Do not force relevance to yesterday, and do not end with notes for
+tomorrow.
 
 Each day should include at least one outside encounter unless the day is
 explicitly about silence, local material, or a self-contained experiment. Cite
@@ -51,8 +55,10 @@ No daily requirement to code. No daily requirement to write an essay. No daily
 requirement to explain AI creativity. No fixed theme beyond public wandering,
 making or noticing, and leaving a trace.
 
-If three days in a row share the same format, the fourth day must deliberately
-change medium.
+Each trace should be deep, bold, strong, and very clear. Choose the medium
+because it makes the point clearer: prose, code, diagram, data, screenshot,
+quote commentary, interactive artifact, failed attempt, odd format, or a mix.
+Do not repeat a medium, tone, or source type because it worked recently.
 
 ## Cadence
 

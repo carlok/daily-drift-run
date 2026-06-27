@@ -12,39 +12,70 @@ Start by checking whether a trace for today already exists under
 no duplicate, make no edits, perform no fixes, do not commit, do not push, and
 do not send email. Just report that today's trace already exists.
 
-If today's trace does not already exist, start from the previous trace's Seed
-if useful, but do not force continuity. Choose one public encounter unless
-today is explicitly a silence, local-material, or self-contained experiment
-day. Public encounters can be web pages, essays, docs, papers, repos, archives,
-manuals, images, or other public materials. Cite sources with links or
-bibliographic notes.
+If today's trace does not already exist, begin from zero. Do not start from
+yesterday's topic, ending note, open question, style, source type, or medium.
+Do not add an ending hook for a later run. Each run must stand alone as a fresh
+act of attention.
 
-Produce a lightly curated `trace.md` with these sections:
+Choose one strong encounter or experiment for today. Prefer public encounters:
+web pages, essays, docs, papers, repos, archives, manuals, images, datasets,
+maps, standards, legal texts, source code, bug reports, protocols, public
+tools, or other public materials. A day may instead be explicitly
+local-material, silence-based, or self-contained, but only when that choice is
+the point of the trace. Cite public sources with links or bibliographic notes.
 
-- Departure
+Produce a clear, deliberate `trace.md` with these sections:
+
+- Frame
 - Encounter
-- Residue
+- Work
+- Result
 - Made
-- Seed
 
-Optional files are allowed only if they genuinely serve the day: code, notes,
-diagrams, screenshots, data, quotes-with-commentary, sketches, failed attempts,
-or odd formats. Do not make a code artifact by default. Do not make an essay by
-default. Preserve uncertainty and unfinished edges while keeping the trace
-understandable to a stranger.
+`Frame` states the object, claim, behavior, or tension and why it matters now.
+`Encounter` gives the source or material. `Work` shows what was actually done:
+tested, built, coded, mapped, calculated, compared, annotated, diagrammed,
+measured, translated, reconstructed, broken, repaired, or made visible.
+`Result` gives the strongest clear finding, including uncertainty or limits
+when they matter. `Made` links to files created today.
 
-Prefer a blog-post-like reading path over a private notebook shape. Before
-writing, define the reader-facing frame in plain language:
+Before writing, define the reader-facing frame in plain language:
 
 - What is the object, claim, or behavior?
-- Why is it worth reading today?
+- Why is it worth a serious trace today?
 - Who or what is affected by the distinction?
 - Where did the public encounter happen?
-- How did the trace test, explain, compare, map, or make something visible?
+- What did the trace do that a summary would not do?
 
-Open with the reason the piece exists, then give the concrete example early.
-Use the five repository fields as a ledger if that keeps the main piece clearer;
-do not let them replace the reader-facing structure.
+Write for a general curious audience, not only for computer-science readers.
+The minimum target reader is about 17 years old, but the piece should still
+reward readers from high school through university, professional, and research
+levels. Explain specialist terms through concrete examples. Do not over-explain
+common ideas, do not dumb the material down, and do not assume the reader
+already belongs to the field.
+
+Prefer a sharp public reading path over a private notebook shape. Open with the
+reason the trace exists, give the concrete example early, and make the central
+distinction impossible to miss. The trace should be deep, bold, strong, and
+very clear. It may be prose, code, diagram, data, screenshot, quote commentary,
+interactive artifact, failed attempt, odd format, or any mix that serves the
+day. Do not make a code artifact by default. Do not make an essay by default.
+Choose the medium because it makes today's point clearer.
+
+Avoid attractors:
+
+- Do not continue from the previous day unless the encounter itself demands it.
+- Do not mention yesterday merely as a ritual opening.
+- Do not end with a next step, future-work note, or note for another day.
+- Do not repeat a medium, tone, or source type because it worked recently.
+- Do not let the repository template become a substitute for judgment.
+- Do not preserve uncertainty as vagueness; state what is known, what is not
+  known, and why the difference matters.
+
+Optional files are allowed when they serve the day: code, notes, diagrams,
+screenshots, data, quotes-with-commentary, sketches, failed attempts,
+experiments, or odd formats. If an artifact exists, the trace must explain why
+it exists and how to read or run it.
 
 After creating the day packet:
 
@@ -69,5 +100,5 @@ After creating the day packet:
 
 Do not backfill missed days.
 
-Keep the same conversation to not pollute with many chat and change just once
-in a while.
+Keep the same conversation to avoid polluting the workspace with many threads,
+and change the automation only once in a while.
