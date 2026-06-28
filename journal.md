@@ -2,6 +2,12 @@
 
 Reverse-chronological index of the Daily Drift Run.
 
+## 2026-06-28
+
+- [Label Zero](days/2026-06-28-label-zero/trace.md) - a reading of U.S.
+  nutrition-label rounding rules, used to show why `0 g` is a display category
+  per serving rather than proof of physical absence.
+
 ## 2026-06-27
 
 - [Unicode Normalization](days/2026-06-27-unicode-normalization/trace.md) - a
