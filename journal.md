@@ -2,6 +2,12 @@
 
 Reverse-chronological index of the Daily Drift Run.
 
+## 2026-06-29
+
+- [License Deed](days/2026-06-29-license-deed/trace.md) - a comparison of the
+  Creative Commons BY 4.0 deed and legal code, used to show why the friendly
+  summary is a reading instrument rather than the binding license itself.
+
 ## 2026-06-28
 
 - [Label Zero](days/2026-06-28-label-zero/trace.md) - a reading of U.S.

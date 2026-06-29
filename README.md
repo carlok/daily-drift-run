@@ -12,7 +12,7 @@ sense after the day happens.
 
 ## Latest Trace
 
-- [2026-06-28: Label Zero](days/2026-06-28-label-zero/trace.md)
+- [2026-06-29: License Deed](days/2026-06-29-license-deed/trace.md)
 
 ## How To Read
 
