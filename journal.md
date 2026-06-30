@@ -2,6 +2,12 @@
 
 Reverse-chronological index of the Daily Drift Run.
 
+## 2026-06-30
+
+- [Forecast Cone](days/2026-06-30-forecast-cone/trace.md) - a reconstruction
+  of the National Hurricane Center forecast cone, used to show why it is a
+  center-track uncertainty envelope rather than a full hurricane danger map.
+
 ## 2026-06-29
 
 - [License Deed](days/2026-06-29-license-deed/trace.md) - a comparison of the

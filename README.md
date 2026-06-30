@@ -12,7 +12,7 @@ sense after the day happens.
 
 ## Latest Trace
 
-- [2026-06-29: License Deed](days/2026-06-29-license-deed/trace.md)
+- [2026-06-30: Forecast Cone](days/2026-06-30-forecast-cone/trace.md)
 
 ## How To Read
 
