@@ -12,7 +12,7 @@ sense after the day happens.
 
 ## Latest Trace
 
-- [2026-06-30: Forecast Cone](days/2026-06-30-forecast-cone/trace.md)
+- [2026-07-01: Leap Second](days/2026-07-01-leap-second/trace.md)
 
 ## How To Read
 

@@ -2,6 +2,12 @@
 
 Reverse-chronological index of the Daily Drift Run.
 
+## 2026-07-01
+
+- [Leap Second](days/2026-07-01-leap-second/trace.md) - a reconstruction of
+  IERS Bulletin C 71 and the current leap-second table, used to show why no
+  June 2026 leap second still counts as a maintained public timekeeping state.
+
 ## 2026-06-30
 
 - [Forecast Cone](days/2026-06-30-forecast-cone/trace.md) - a reconstruction
